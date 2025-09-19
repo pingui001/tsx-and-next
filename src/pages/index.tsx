@@ -1,5 +1,6 @@
+"use client";
+import React from 'react';
 import { SetStateAction, use, useState } from 'react';
-//import handler from './api/hello';
 import { useRouter } from "next/router";   
 import { usuarios } from '@/utils/utils';
 
@@ -21,10 +22,10 @@ const Login = () => {
             if (user == "" || passWord == ""){
                 alert("El usuario y la contraseña no pueden estar vacios");
             }
-            const userFound = usuarios.find((item) => item.name == user && item.password == Number(passWord) );
+            const userFound = usuarios.find((item) => item.usuarioname == user && item.password == (passWord) );
             
             if (userFound){
-                router.push("/index2");
+                router.push("/dashboard");
             } else {
                 setPassWord("");
                 setUser("");
@@ -34,32 +35,6 @@ const Login = () => {
 
 
         };
-
-
-
-
-       /* const [password, setPassword] = useState("");  
-
-        //const handlerChangeUser = (e: { target: { value: SetStateAction<string>; }; }) => {
-        //    setUser(e.target.value);
-        //}
-
-        const handlerChangePassword = (e: { target: { value: SetStateAction<string>; }; }) => {
-            setPassword(e.target.value);
-        }
-        console.log(handlerChangePassword);
-
-        const router = useRouter();
-        
-        const handlerClick = () => {
-            if (user == ""){
-                alert("El usuario no puede estar vacio");
-                return; 
-            } else if (password == "123"){
-                router.push("/index2");
-            }
-        } */
-        
 
     return (
 
